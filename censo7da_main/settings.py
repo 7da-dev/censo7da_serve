@@ -51,8 +51,11 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
 
+    'import_export',
+
     'users',
     'home',
+    'census',
 
 
 ]
@@ -109,14 +112,14 @@ WSGI_APPLICATION = 'censo7da_main.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-DATABASESx = {
+DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
-DATABASES = {
+DATABASESx = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'd3dmgsmtet6g74',
