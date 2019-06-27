@@ -51,6 +51,9 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
 
+    'users',
+    'home',
+
 
 ]
 
@@ -69,6 +72,14 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+if DEBUG:
+    INSTALLED_APPS = INSTALLED_APPS + [
+        'debug_toolbar',
+    ]
+    MIDDLEWARE = MIDDLEWARE + [
+        'debug_toolbar.middleware.DebugToolbarMiddleware',
+    ]
 
 ROOT_URLCONF = 'censo7da_main.urls'
 
@@ -105,13 +116,13 @@ DATABASES = {
     }
 }
 
-DATABASESp = {
+DATABASESx = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'd3j1a4natldvcq',
-        'USER': 'accrblhutrtxmb',
-        'PASSWORD': 'ccc781ae09fa5ab3e99c288028bd28df9fb2140e635b6a7c30fbd4421635886a',
-        'HOST': 'ec2-107-22-189-136.compute-1.amazonaws.com',
+        'NAME': 'd3dmgsmtet6g74',
+        'USER': 'xvevufvdgmmkkk',
+        'PASSWORD': '86d97b60918deaad3348ef280826699601c9af35de96faf6a99e54da0a04ad7f',
+        'HOST': 'ec2-107-20-185-16.compute-1.amazonaws.com',
         'PORT': '5432',
     }
 }
@@ -190,3 +201,17 @@ INTERNAL_IPS = ['127.0.0.1']
 
 LOGIN_REDIRECT_URL = '/admin/'
 #LOGOUT_REDIRECT_URL = '/accounts/login/'
+
+AUTH_USER_MODEL = 'users.User'
+
+# https://wsvincent.com/django-user-authentication-tutorial-password-reset/
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    #'accounts.authentication.EmailAuthBackend',
+    #'oauth2_provider.backends.OAuth2Backend',
+    #'allauth.account.auth_backends.AuthenticationBackend',
+)
+
+# DJANGO-ALLAUTH SETTINGS
+# Site id required for using 'sites' framework with django-allauth
+SITE_ID = 1
